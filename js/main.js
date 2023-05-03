@@ -3,7 +3,24 @@ const form = document.getElementById("novoItem")
 form.addEventListener("submit", (evento) => {
     evento.preventDefault();
 
-    console.log(evento)
-    console.log(evento.target.elements['nome'].value)
-    console.log(evento.target.elements['quantidade'].value)
-})
+    criaElemento(evento.target.elements['nome'].value, evento.target.elements['quantidade'].value)
+});
+
+function criaElemento(nome, quantidade){
+    console.log(nome)
+    console.log(quantidade)
+
+    const novoItem = document.createElement('li')
+    novoItem.classList.add('item')
+
+    const numeroItem = document.createElement('strong')
+    numeroItem.innerHTML = quantidade
+
+    novoItem.appendChild(numeroItem)
+    novoItem.innerHTML += nome
+
+    console.log(novoItem)
+
+    const lista = document.getElementById("lista")
+    lista.appendChild(novoItem)
+}
